@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/uosyph/ECHO/issues"
   },
-  "homepage": "https://github.com/uosyph/ECHO#readme"
+  "homepage": "https://github.com/uosyph/ECHO#readme",
+  "dependencies": {
+    "inquirer": "^9.2.14"
+  }
 }
