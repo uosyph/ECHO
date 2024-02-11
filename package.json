@@ -1,0 +1,20 @@
+{
+  "name": "echo",
+  "version": "1.0.0",
+  "description": "TUI Chat App",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uosyph/ECHO.git"
+  },
+  "keywords": [
+    "tui",
+    "chatting",
+    "messaging"
+  ],
+  "author": "Yousef Saeed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uosyph/ECHO/issues"
+  },
+  "homepage": "https://github.com/uosyph/ECHO#readme"
+}
