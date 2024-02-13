@@ -4,6 +4,8 @@
   "description": "TUI Chat App",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js",
     "test": "jest"
   },
   "repository": {
@@ -29,5 +31,10 @@
     "mongoose": "^8.1.1",
     "redis": "^4.6.13",
     "socket.io": "^4.7.4"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^9.1.6",
+    "nodemon": "^3.0.3",
+    "socket.io-client": "^4.7.4"
   }
 }

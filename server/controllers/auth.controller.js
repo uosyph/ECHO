@@ -5,7 +5,7 @@ const redisClient = require('../utils/redis');
 const User = require("../models/user.model");
 
 require('dotenv').config();
-const SALT_ROUNDS = process.env.SALT_ROUNDS;
+const SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
 const SECRET_KEY = process.env.SECRET_KEY;
 
 async function registerUser(req, res) {
