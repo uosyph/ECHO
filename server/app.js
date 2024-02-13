@@ -1,7 +1,7 @@
 const express = require('express');
 
-const authRouter = require('./routes/auth/auth.route');
-const channelRouter = require('./routes/channel/channel.route');
+const authRouter = require('./routes/auth.route');
+const channelRouter = require('./routes/channel.route');
 
 const app = express();
 
