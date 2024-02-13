@@ -1,10 +1,10 @@
 const ChatRoom = require("../models/channel.model");
 
-async function createChannel(req, res) {
+async function createChatRoom(req, res) {
   try {
-    const { channelName } = req.body;
-    const isChannelExist = await ChatRoom.findOne({ channelName });
-    if (isChannelExist) {
+    const { roomName } = req.body;
+    const isRoomExist = await ChatRoom.findOne({ roomName });
+    if (isRoomExist) {
       res.status(409).json({ message: 'Chat room already exists' });
     } else {
       const chatRoom = new ChatRoom(req.body);
@@ -16,17 +16,17 @@ async function createChannel(req, res) {
   }
 }
 
-async function joinChannel(req, res) {
+async function joinChatRoom(req, res) {
   try {
-    const channels = await ChatRoom.find({}, 'roomName');
-    const channelNames = channels.map((chatRoom) => chatRoom.roomName);
-    res.status(200).json(channelNames);
+    const chatRooms = await ChatRoom.find({}, 'roomName');
+    const roomNames = chatRooms.map((chatRoom) => chatRoom.roomName);
+    res.status(200).json(roomNames);
   } catch (err) {
     res.status(500).json({ message: 'couldn\'t join chat room' });
   }
 }
 
 module.exports = {
-  createChannel,
-  joinChannel,
+  createChatRoom,
+  joinChatRoom,
 };
