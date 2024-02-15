@@ -2,6 +2,9 @@
 const { Command } = require('commander');
 const ioSocket = require('socket.io-client');
 
+const getAuthOption = require('./views/getAuthOption');
+const getMenuOption = require('./views/getMenuOption');
+const render = require('./views/renderInterface');
 const eventHandler = require('./eventHandler');
 
 const echo = new Command();
