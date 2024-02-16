@@ -4,7 +4,7 @@ const readline = require('readline');
 const eventHandler = require('../eventHandler');
 const render = require('./renderInterface');
 const getToken = require('../auth/getToken');
-const getMenuOption = require('./getMenuOption');
+const homeInterface = require('./homeInterface');
 const exitApp = require('../ui/exitApp');
 
 function channelInterface(client, channel) {
@@ -40,7 +40,7 @@ function channelInterface(client, channel) {
       eventHandler(newClient);
 
       // Render menu interface according to user's selection and join a new channel
-      const homeOption = await getMenuOption();
+      const homeOption = await homeInterface();
       const channel = await render[homeOption](newClient);
       channelInterface(newClient, channel);
     }

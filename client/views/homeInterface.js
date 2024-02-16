@@ -1,6 +1,6 @@
 const { prompt } = require('inquirer');
 
-function getMenuOption() {
+function homeInterface() {
   const menuOptions = [
     {
       type: 'list',
@@ -17,4 +17,4 @@ function getMenuOption() {
   return prompt(menuOptions).then(answers => answers.selectedOption);
 }
 
-module.exports = getMenuOption;
+module.exports = homeInterface;
