@@ -4,6 +4,7 @@ const ioSocket = require('socket.io-client');
 
 const getAuthOption = require('./views/getAuthOption');
 const getMenuOption = require('./views/getMenuOption');
+const chatMessageInterface = require('./views/chatMessageInterface');
 const render = require('./views/renderInterface');
 const eventHandler = require('./eventHandler');
 
