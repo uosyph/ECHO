@@ -5,7 +5,7 @@ const eventHandler = require('../eventHandler');
 const render = require('./renderInterface');
 const getToken = require('../auth/getToken');
 const homeInterface = require('./homeInterface');
-const exitApp = require('../ui/exitApp');
+const exitClient = require('../ui/exitClient');
 
 function channelInterface(client, channel) {
   console.info('/h to go Home.');
@@ -23,7 +23,7 @@ function channelInterface(client, channel) {
     const message = input.trim();
     if (message === '/e') {
       rl.close();
-      exitApp();
+      exitClient();
     }
     else if (message === '/h') {
       if (!clientUsername) {
