@@ -7,8 +7,8 @@ function getMenuOption() {
       name: 'selectedOption',
       message: 'Home',
       choices: [
-        { name: 'Create-Chat-Room', value: 'Create-Chat-Room', message: 'Create a Chat Room' },
-        { name: 'Join-Chat-Room', value: 'Join-Chat-Room', message: 'Join a Chat Room' },
+        { name: 'Create a Channel', value: 'Create-Chat-Room', message: 'Create a Channel' },
+        { name: 'Join a Channel', value: 'Join-Chat-Room', message: 'Join a Channel' },
         { name: 'Exit', value: 'Exit', message: 'Exit the App' },
       ]
     },
