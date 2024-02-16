@@ -4,7 +4,7 @@ const ioSocket = require('socket.io-client');
 
 const getAuthOption = require('./views/getAuthOption');
 const getMenuOption = require('./views/getMenuOption');
-const chatMessageInterface = require('./views/chatMessageInterface');
+const channelInterface = require('./views/channelInterface');
 const render = require('./views/renderInterface');
 const eventHandler = require('./eventHandler');
 
@@ -31,7 +31,7 @@ echo
     const homeOption = await getMenuOption();
     const channel = await render[homeOption](client);
 
-    chatMessageInterface(client, channel);
+    channelInterface(client, channel);
   }
   );
 

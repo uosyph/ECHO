@@ -7,7 +7,7 @@ const getToken = require('../auth/getToken');
 const getMenuOption = require('./getMenuOption');
 const exitApp = require('../ui/exitApp');
 
-function chatMessageInterface(client, channel) {
+function channelInterface(client, channel) {
   console.info('/h to go Home.');
   console.info('/e to Exit.');
 
@@ -42,11 +42,11 @@ function chatMessageInterface(client, channel) {
       // Render menu interface according to user's selection and join a new channel
       const homeOption = await getMenuOption();
       const channel = await render[homeOption](newClient);
-      chatMessageInterface(newClient, channel);
+      channelInterface(newClient, channel);
     }
 
     client.emit('chat message', channel, message);
   });
 }
 
-module.exports = chatMessageInterface;
+module.exports = channelInterface;
