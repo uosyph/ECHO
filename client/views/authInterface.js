@@ -1,6 +1,6 @@
 const { prompt } = require('inquirer');
 
-function getAuthOption() {
+function authInterface() {
   const authOptions = [
     {
       type: 'list',
@@ -17,4 +17,4 @@ function getAuthOption() {
   return prompt(authOptions).then(answers => answers.selectedOption);
 }
 
-module.exports = getAuthOption;
+module.exports = authInterface;

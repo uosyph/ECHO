@@ -4,10 +4,10 @@ const readline = require('readline');
 const eventHandler = require('../eventHandler');
 const render = require('./renderInterface');
 const getToken = require('../auth/getToken');
-const getMenuOption = require('./getMenuOption');
-const exitApp = require('../ui/exitApp');
+const homeInterface = require('./homeInterface');
+const exitClient = require('../ui/exitClient');
 
-function chatMessageInterface(client, channel) {
+function channelInterface(client, channel) {
   console.info('/h to go Home.');
   console.info('/e to Exit.');
 
@@ -23,7 +23,7 @@ function chatMessageInterface(client, channel) {
     const message = input.trim();
     if (message === '/e') {
       rl.close();
-      exitApp();
+      exitClient();
     }
     else if (message === '/h') {
       if (!clientUsername) {
@@ -40,13 +40,13 @@ function chatMessageInterface(client, channel) {
       eventHandler(newClient);
 
       // Render menu interface according to user's selection and join a new channel
-      const homeOption = await getMenuOption();
+      const homeOption = await homeInterface();
       const channel = await render[homeOption](newClient);
-      chatMessageInterface(newClient, channel);
+      channelInterface(newClient, channel);
     }
 
     client.emit('chat message', channel, message);
   });
 }
 
-module.exports = chatMessageInterface;
+module.exports = channelInterface;
