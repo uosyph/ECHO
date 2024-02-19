@@ -7,8 +7,8 @@ const exitClient = require('../ui/exitClient');
 const render = {
   'Register': registerUser,
   'Login': loginUser,
-  'Create-Chat-Room': createChannel,
-  'Join-Chat-Room': joinChannel,
+  'Create-Channel': createChannel,
+  'Join-Channel': joinChannel,
   'Exit': exitClient
 };
 

@@ -7,8 +7,8 @@ function homeInterface() {
       name: 'selectedOption',
       message: 'Home',
       choices: [
-        { name: 'Create a Channel', value: 'Create-Chat-Room', message: 'Create a Channel' },
-        { name: 'Join a Channel', value: 'Join-Chat-Room', message: 'Join a Channel' },
+        { name: 'Create a Channel', value: 'Create-Channel', message: 'Create a Channel' },
+        { name: 'Join a Channel', value: 'Join-Channel', message: 'Join a Channel' },
         { name: 'Exit', value: 'Exit', message: 'Exit the App' },
       ]
     },
