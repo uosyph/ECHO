@@ -8,9 +8,6 @@ const homeInterface = require('./homeInterface');
 const exitClient = require('../ui/exitClient');
 
 function channelInterface(client, channel) {
-  console.info('/h to go Home.');
-  console.info('/e to Exit.');
-
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -44,6 +41,7 @@ function channelInterface(client, channel) {
       const channel = await render[homeOption](newClient);
       channelInterface(newClient, channel);
     }
+    else if (message === '' || message.length === 0) { return; }
 
     client.emit('chat message', channel, message);
   });

@@ -37,7 +37,7 @@ module.exports = (io) => {
         socket.emit('chat message', socket.username === message.username ? message.message : `${message.username}: ${message.message}`);
       });
 
-      socket.emit('joined', `You joined ${room}`);
+      socket.emit('joined', `You joined ${room}\n/h to go Home.\n/e to Exit.`);
       socket.broadcast.to(room).emit('user joined', `${socket.username} joined ${room}`);
     });
 
