@@ -31,13 +31,13 @@ module.exports = (io) => {
       socket.emit('username', socket.username);
       socket.join(room);
       socketRoomMap.set(socket.username, room);
-      socket.emit('joined', `You joined ${room}`);
 
       const messages = await Message.find({ roomId: room }).sort({ createdAt: 1 });
       messages.forEach((message) => {
         socket.emit('chat message', `${message.username}: ${message.message}`);
       });
 
+      socket.emit('joined', `You joined ${room}`);
       socket.broadcast.to(room).emit('user joined', `${socket.username} joined ${room}`);
     });
 
@@ -49,7 +49,7 @@ module.exports = (io) => {
         message,
       });
       await newMessage.save();
-      io.to(room).emit('chat message', `${socket.username}: ${message}`);
+      socket.broadcast.to(room).emit('chat message', `${socket.username}: ${message}`);
     });
 
     // Handle 'disconnect' event when a client disconnects
