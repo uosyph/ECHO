@@ -34,7 +34,7 @@ module.exports = (io) => {
 
       const messages = await Message.find({ roomId: room }).sort({ createdAt: 1 });
       messages.forEach((message) => {
-        socket.emit('chat message', `${message.username}: ${message.message}`);
+        socket.emit('chat message', socket.username === message.username ? message.message : `${message.username}: ${message.message}`);
       });
 
       socket.emit('joined', `You joined ${room}`);
