@@ -10,7 +10,7 @@ const eventHandler = require('./eventHandler');
 
 const echo = new Command();
 
-echo.version('1.0.1').description('TUI Chat App');
+echo.version('1.0.2').description('TUI Chat App');
 
 echo.action(async () => {
   // Render authentication interface according to what the user selects
