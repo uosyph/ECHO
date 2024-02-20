@@ -31,6 +31,7 @@ function channelInterface(client, channel) {
       const token = await getToken(clientUsername);
 
       client.disconnect();
+      rl.close();
 
       // Create a new client connection and handle its events
       const newClient = ioSocket('http://127.0.0.1:8080', { auth: { token } });
@@ -41,7 +42,7 @@ function channelInterface(client, channel) {
       const channel = await render[homeOption](newClient);
       channelInterface(newClient, channel);
     }
-    else if (message === '' || message.length === 0) { return; }
+    else if (message === '' || message.length === 0) return;
 
     client.emit('chat message', channel, message);
   });
