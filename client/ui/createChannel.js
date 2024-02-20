@@ -8,7 +8,7 @@ module.exports = async function createChatRoom(client) {
     {
       type: 'input',
       name: 'roomName',
-      message: 'Enter Channel Name'
+      message: 'Enter channel name:'
     }
   ];
 
@@ -18,12 +18,12 @@ module.exports = async function createChatRoom(client) {
     const response = await axios.post('http://127.0.0.1:8080/channel/chatrooms', { roomName });
     const channel = response.data;
 
-    console.log(`${channel} chat room created`);
+    console.info(`${channel} was just created.`);
     joinChannel(client, channel);
     return channel;
   } catch (error) {
     if (error.response.data.message) {
-      console.info(error.response.data.message);
+      console.error(error.response.data.message);
       createChatRoom(client);
     }
     else console.error(error);

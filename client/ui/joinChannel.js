@@ -10,7 +10,7 @@ module.exports = async function joinChatRoom(client, channel = null) {
       {
         type: 'list',
         name: 'selectedRoom',
-        message: 'Choose a Channel:',
+        message: 'Choose a channel to join:',
         choices: channels,
       },
     ];

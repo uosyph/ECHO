@@ -36,15 +36,11 @@ const loginUser = async (username, password, email = null) => {
       password,
     });
 
-    console.log(response.data.message);
+    console.info(response.data.message);
     return response.data.token;
   }
   catch (error) {
-    if (error.response.data.message === 'Invalid username or password') {
-      console.info(error.response.data.message);
-      loginUser(username, password);
-    }
-    else console.error(error.response.data);
+    console.error(error.response.data.message);
   }
 };
 

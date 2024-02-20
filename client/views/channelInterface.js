@@ -24,7 +24,7 @@ function channelInterface(client, channel) {
     }
     else if (message === '/h') {
       if (!clientUsername) {
-        console.log('Waiting for username...');
+        console.log('Trying to get client username...');
         return;
       }
 

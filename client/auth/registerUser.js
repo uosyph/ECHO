@@ -32,14 +32,9 @@ const registerUser = async () => {
     });
 
     console.info(response.data.message);
-    console.info('-----------------------');
     return loginUser(username, password, email);
   } catch (error) {
-    if (error.response.data.message === 'Username or email already exists') {
-      console.info(error.response.data.message);
-      registerUser();
-    }
-    else console.error(error.response.data);
+    console.error(error.response.data.message);
   }
 };
 

@@ -18,7 +18,7 @@ echo.action(async () => {
   const token = await render[authOption]();
 
   if (!token) {
-    console.info('Authentication Error!');
+    console.error('Authentication Error!');
     process.exit(1);
   }
 
