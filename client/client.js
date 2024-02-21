@@ -35,6 +35,6 @@ echo.action(async () => {
 echo.parse(process.argv);
 
 process.on('uncaughtException', (error) => {
-  console.error('Uncaught Client Exception:', error);
+  console.error('Uncaught client exception:', error);
   process.exit(1);
 });

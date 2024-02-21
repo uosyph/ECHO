@@ -11,13 +11,13 @@ module.exports = (io) => {
       const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
 
       const user = await User.findById(decodedToken.userId);
-      if (!user) throw new Error('User not found');
+      if (!user) throw new Error('User not found.');
 
       socket.username = user.username;
       next();
     } catch (error) {
-      console.error('Authentication error', error);
-      next(new Error('Authentication error'));
+      console.error('Authentication error:', error);
+      next(new Error('An error occurred while attempting to authentication user.'));
     }
   });
 
@@ -56,7 +56,7 @@ module.exports = (io) => {
     socket.on('disconnecting', () => {
       const room = socketRoomMap.get(socket.username);
       if (room) {
-        socket.broadcast.to(room).emit('user left', `${socket.username} left the chat room`);
+        socket.broadcast.to(room).emit('user left', `${socket.username} left ${room}`);
         socketRoomMap.delete(socket.username);
       }
     });
