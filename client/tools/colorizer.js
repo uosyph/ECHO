@@ -44,11 +44,11 @@ const escapeCodes = {
   bgBrightWhite: "\x1b[107m",
 };
 
-function colorize(text, fgColor, bgolor, style) {
+function colorize(string, fgColor, bgColor, style) {
   const fgColorCode = escapeCodes[fgColor] || "";
   const bgColorCode = escapeCodes[bgColor] || "";
   const styleCode = escapeCodes[style] || "";
-  return `${styleCode}${fgColorCode}${bgColorCode}${text}${escapeCodes.reset}`;
+  return `${styleCode}${fgColorCode}${bgColorCode}${string}${escapeCodes.reset}`;
 }
 
 module.exports = colorize;
