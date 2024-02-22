@@ -6,6 +6,7 @@ const render = require('./renderInterface');
 const getToken = require('../auth/getToken');
 const homeInterface = require('./homeInterface');
 const exitClient = require('../ui/exitClient');
+const colorize = require("../tools/colorizer");
 
 function channelInterface(client, channel) {
   const rl = readline.createInterface({
@@ -24,7 +25,7 @@ function channelInterface(client, channel) {
     }
     else if (message === '/h') {
       if (!clientUsername) {
-        console.log('Trying to get client username...');
+        console.log(colorize('Trying to get client username...', 'brightWhite'));
         return;
       }
 

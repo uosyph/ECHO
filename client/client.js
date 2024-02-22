@@ -7,6 +7,7 @@ const homeInterface = require('./views/homeInterface');
 const channelInterface = require('./views/channelInterface');
 const render = require('./views/renderInterface');
 const eventHandler = require('./eventHandler');
+const colorize = require("./tools/colorizer");
 
 const echo = new Command();
 
@@ -18,7 +19,7 @@ echo.action(async () => {
   const token = await render[authOption]();
 
   if (!token) {
-    console.error('Authentication Error!');
+    console.error(colorize('Authentication Error!', 'brightWhite', 'red'));
     process.exit(1);
   }
 
@@ -35,6 +36,6 @@ echo.action(async () => {
 echo.parse(process.argv);
 
 process.on('uncaughtException', (error) => {
-  console.error('Uncaught client exception:', error);
+  console.error(colorize('Uncaught client exception:', 'brightWhite', 'red'), error);
   process.exit(1);
 });

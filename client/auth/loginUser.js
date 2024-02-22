@@ -1,6 +1,8 @@
 const axios = require('axios');
 const { prompt } = require('inquirer');
 
+const colorize = require("../../server/tools/colorizer");
+
 const loginUser = async (username, password, email = null) => {
   if (email) {
     try {
@@ -9,10 +11,10 @@ const loginUser = async (username, password, email = null) => {
         password,
       });
 
-      console.log(response.data.message);
+      console.log(colorize(response.data.message, 'brightWhite'));
       return response.data.token;
     }
-    catch (error) { console.error(error.response.data); }
+    catch (error) { console.error(colorize(error.response.data, 'red')); }
   }
 
   const questions = [
@@ -36,11 +38,11 @@ const loginUser = async (username, password, email = null) => {
       password,
     });
 
-    console.info(response.data.message);
+    console.log(colorize(response.data.message, 'brightWhite'));
     return response.data.token;
   }
   catch (error) {
-    console.error(error.response.data.message);
+    console.error(colorize(error.response.data.message, 'red'));
   }
 };
 

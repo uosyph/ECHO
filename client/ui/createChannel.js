@@ -2,6 +2,7 @@ const axios = require('axios');
 const { prompt } = require('inquirer');
 
 const joinChannel = require('./joinChannel');
+const colorize = require("../tools/colorizer");
 
 module.exports = async function createChatRoom(client) {
   const question = [
@@ -18,12 +19,12 @@ module.exports = async function createChatRoom(client) {
     const response = await axios.post('http://127.0.0.1:8080/channel/chatrooms', { roomName });
     const channel = response.data;
 
-    console.info(`${channel} was just created.`);
+    console.info(colorize(channel, 'magenta', null, 'bold') + colorize(' was just created.', 'brightWhite'));
     joinChannel(client, channel);
     return channel;
   } catch (error) {
     if (error.response.data.message) {
-      console.error(error.response.data.message);
+      console.error(colorize(error.response.data.message, 'red'));
       createChatRoom(client);
     }
     else console.error(error);

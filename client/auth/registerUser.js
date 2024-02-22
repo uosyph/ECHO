@@ -2,6 +2,7 @@ const axios = require('axios');
 const { prompt } = require('inquirer');
 
 const loginUser = require('./loginUser');
+const colorize = require("../tools/colorizer");
 
 const registerUser = async () => {
   const questions = [
@@ -31,10 +32,10 @@ const registerUser = async () => {
       password,
     });
 
-    console.info(response.data.message);
+    console.log(colorize(response.data.message, 'brightWhite'));
     return loginUser(username, password, email);
   } catch (error) {
-    console.error(error.response.data.message);
+    console.error(colorize(error.response.data.message, 'red'));
   }
 };
 
