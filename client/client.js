@@ -7,6 +7,7 @@ const homeInterface = require('./views/homeInterface');
 const channelInterface = require('./views/channelInterface');
 const render = require('./views/renderInterface');
 const eventHandler = require('./eventHandler');
+const exitClient = require('./ui/exitClient');
 const colorize = require("./tools/colorizer");
 
 const echo = new Command();
@@ -34,6 +35,11 @@ echo.action(async () => {
 });
 
 echo.parse(process.argv);
+
+process.on('SIGINT', () => {
+  console.log('');
+  exitClient();
+});
 
 process.on('uncaughtException', (error) => {
   console.error(colorize('Uncaught client exception:', 'brightWhite', 'red'), error);
