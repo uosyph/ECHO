@@ -19,7 +19,7 @@ module.exports = async function createChatRoom(client) {
     const response = await axios.post('http://127.0.0.1:8080/channel/chatrooms', { roomName });
     const channel = response.data;
 
-    console.info(colorize(channel, 'magenta', null, 'bold') + colorize(' was just created.', 'brightWhite'));
+    console.info(colorize(channel, 'cyan', null, 'bold') + colorize(' was just created.', 'brightWhite'));
     joinChannel(client, channel);
     return channel;
   } catch (error) {

@@ -36,17 +36,17 @@ module.exports = (io) => {
       const messages = await Message.find({ roomId: room }).sort({ createdAt: 1 });
       messages.forEach((message) => {
         socket.emit('chat message',
-          socket.username === message.username ? message.message : `${colorize(socket.username, null, null, 'bold')}: ${message.message}`
+          socket.username === message.username ? message.message : `${colorize(socket.username, 'brightWhite', null, 'bold')}: ${message.message}`
         );
       });
 
       socket.emit('joined',
-        `You joined ${colorize(room, 'magenta', null, 'bold')}` +
+        `You joined ${colorize(room, 'cyan')}` +
         `\n${colorize('/h', 'green')} to go Home.` +
         `\n${colorize('/e', 'brightRed')} to Exit.`
       );
       socket.broadcast.to(room).emit('user joined',
-        `${colorize(socket.username, 'brightWhite', null, 'bold')} joined ${colorize(room, 'magenta', null, 'bold')}`
+        `${colorize(socket.username, 'brightWhite')} joined ${colorize(room, 'cyan')}`
       );
     });
 
@@ -59,7 +59,7 @@ module.exports = (io) => {
       });
       await newMessage.save();
       socket.broadcast.to(room).emit('chat message',
-        `${colorize(socket.username, null, null, 'bold')}: ${message}`
+        `${colorize(socket.username, 'brightWhite', null, 'bold')}: ${message}`
       );
     });
 
@@ -68,7 +68,7 @@ module.exports = (io) => {
       const room = socketRoomMap.get(socket.username);
       if (room) {
         socket.broadcast.to(room).emit('user left',
-          `${colorize(socket.username, 'brightWhite', null, 'bold')} left ${colorize(room, 'magenta', null, 'bold')}`
+          `${colorize(socket.username, 'brightWhite')} left ${colorize(room, 'cyan')}`
         );
         socketRoomMap.delete(socket.username);
       }
