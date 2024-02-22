@@ -1,6 +1,8 @@
 const axios = require('axios');
 const { prompt } = require('inquirer');
 
+const colorize = require("../../server/tools/colorizer");
+
 const loginUser = async (username, password, email = null) => {
   if (email) {
     try {
@@ -9,10 +11,10 @@ const loginUser = async (username, password, email = null) => {
         password,
       });
 
-      console.log(response.data.message);
+      console.log(colorize(response.data.message, 'brightWhite'));
       return response.data.token;
     }
-    catch (error) { console.error(error.response.data); }
+    catch (error) { console.error(colorize(error.response.data, 'red')); }
   }
 
   const questions = [
@@ -20,11 +22,13 @@ const loginUser = async (username, password, email = null) => {
       type: 'input',
       name: 'username',
       message: 'Enter your username:',
+      prefix: `${colorize('\u00D7', 'magenta', null, 'bold')}`,
     },
     {
       type: 'password',
       name: 'password',
       message: 'Enter your password:',
+      prefix: `${colorize('\u00D7', 'magenta', null, 'bold')}`,
     },
   ];
 
@@ -36,15 +40,11 @@ const loginUser = async (username, password, email = null) => {
       password,
     });
 
-    console.log(response.data.message);
+    console.log(colorize(response.data.message, 'brightWhite'));
     return response.data.token;
   }
   catch (error) {
-    if (error.response.data.message === 'Invalid username or password') {
-      console.info(error.response.data.message);
-      loginUser(username, password);
-    }
-    else console.error(error.response.data);
+    console.error(colorize(error.response.data.message, 'red'));
   }
 };
 

@@ -2,6 +2,7 @@ const axios = require('axios');
 const { prompt } = require('inquirer');
 
 const loginUser = require('./loginUser');
+const colorize = require("../tools/colorizer");
 
 const registerUser = async () => {
   const questions = [
@@ -9,16 +10,19 @@ const registerUser = async () => {
       type: 'input',
       name: 'username',
       message: 'Enter your username:',
+      prefix: `${colorize('\u00D7', 'magenta', null, 'bold')}`,
     },
     {
       type: 'input',
       name: 'email',
       message: 'Enter your email:',
+      prefix: `${colorize('\u00D7', 'magenta', null, 'bold')}`,
     },
     {
       type: 'password',
       name: 'password',
       message: 'Enter your password:',
+      prefix: `${colorize('\u00D7', 'magenta', null, 'bold')}`,
     },
   ];
 
@@ -31,15 +35,10 @@ const registerUser = async () => {
       password,
     });
 
-    console.info(response.data.message);
-    console.info('-----------------------');
+    console.log(colorize(response.data.message, 'brightWhite'));
     return loginUser(username, password, email);
   } catch (error) {
-    if (error.response.data.message === 'Username or email already exists') {
-      console.info(error.response.data.message);
-      registerUser();
-    }
-    else console.error(error.response.data);
+    console.error(colorize(error.response.data.message, 'red'));
   }
 };
 

@@ -19,7 +19,4 @@ server.listen(PORT, async () => {
     console.log(`Server listening on port ${PORT}...`);
 });
 
-process.on('uncaughtException', (error) => {
-    console.error('Uncaught Server Exception:', error);
-    process.exit(1);
-});
+process.on('uncaughtException', (error) => { console.error('Uncaught server exception:', error); });

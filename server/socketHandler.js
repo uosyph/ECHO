@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 const User = require('./models/user.model');
-const Message = require("./models/message.model");
+const Message = require('./models/message.model');
+const colorize = require('./tools/colorizer');
 
 module.exports = (io) => {
   // Authentication middleware
@@ -11,13 +12,13 @@ module.exports = (io) => {
       const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
 
       const user = await User.findById(decodedToken.userId);
-      if (!user) throw new Error('User not found');
+      if (!user) throw new Error('User not found.');
 
       socket.username = user.username;
       next();
     } catch (error) {
-      console.error('Authentication error', error);
-      next(new Error('Authentication error'));
+      console.error('Authentication error:', error);
+      next(new Error('An error occurred while attempting to authentication user.'));
     }
   });
 
@@ -34,11 +35,19 @@ module.exports = (io) => {
 
       const messages = await Message.find({ roomId: room }).sort({ createdAt: 1 });
       messages.forEach((message) => {
-        socket.emit('chat message', socket.username === message.username ? message.message : `${message.username}: ${message.message}`);
+        socket.emit('chat message',
+          socket.username === message.username ? message.message : `${colorize(socket.username, 'brightWhite', null, 'bold')}: ${message.message}`
+        );
       });
 
-      socket.emit('joined', `You joined ${room}\n/h to go Home.\n/e to Exit.`);
-      socket.broadcast.to(room).emit('user joined', `${socket.username} joined ${room}`);
+      socket.emit('joined',
+        `You joined ${colorize(room, 'magenta')}` +
+        `\n${colorize('/h', 'green')} to go Home.` +
+        `\n${colorize('/e', 'brightRed')} to Exit.`
+      );
+      socket.broadcast.to(room).emit('user joined',
+        `${colorize(socket.username, 'brightWhite')} joined ${colorize(room, 'magenta')}`
+      );
     });
 
     // Handle 'chat message' event when a client sends a message
@@ -49,14 +58,18 @@ module.exports = (io) => {
         message,
       });
       await newMessage.save();
-      socket.broadcast.to(room).emit('chat message', `${socket.username}: ${message}`);
+      socket.broadcast.to(room).emit('chat message',
+        `${colorize(socket.username, 'brightWhite', null, 'bold')}: ${message}`
+      );
     });
 
     // Handle 'disconnect' event when a client disconnects
     socket.on('disconnecting', () => {
       const room = socketRoomMap.get(socket.username);
       if (room) {
-        socket.broadcast.to(room).emit('user left', `${socket.username} left the chat room`);
+        socket.broadcast.to(room).emit('user left',
+          `${colorize(socket.username, 'brightWhite')} left ${colorize(room, 'magenta')}`
+        );
         socketRoomMap.delete(socket.username);
       }
     });

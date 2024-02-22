@@ -7,10 +7,12 @@ const homeInterface = require('./views/homeInterface');
 const channelInterface = require('./views/channelInterface');
 const render = require('./views/renderInterface');
 const eventHandler = require('./eventHandler');
+const exitClient = require('./ui/exitClient');
+const colorize = require("./tools/colorizer");
 
 const echo = new Command();
 
-echo.version('1.0.2').description('TUI Chat App');
+echo.version('1.0.3').description('TUI Chat App');
 
 echo.action(async () => {
   // Render authentication interface according to what the user selects
@@ -18,7 +20,7 @@ echo.action(async () => {
   const token = await render[authOption]();
 
   if (!token) {
-    console.info('Authentication Error!');
+    console.error(colorize('Authentication Error!', 'brightWhite', 'red'));
     process.exit(1);
   }
 
@@ -34,7 +36,12 @@ echo.action(async () => {
 
 echo.parse(process.argv);
 
+process.on('SIGINT', () => {
+  console.log('');
+  exitClient();
+});
+
 process.on('uncaughtException', (error) => {
-  console.error('Uncaught Client Exception:', error);
+  console.error(colorize('Uncaught client exception:', 'brightWhite', 'red'), error);
   process.exit(1);
 });

@@ -1,6 +1,6 @@
 {
   "name": "echo-chat",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "TUI Chat App",
   "main": "client.js",
   "bin": "./client.js",
