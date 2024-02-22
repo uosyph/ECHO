@@ -1,5 +1,7 @@
 const { prompt } = require('inquirer');
 
+const colorize = require('../tools/colorizer');
+
 function homeInterface() {
   const menuOptions = [
     {
@@ -10,7 +12,8 @@ function homeInterface() {
         { name: 'Create a channel', value: 'Create-Channel', message: 'Create a channel' },
         { name: 'Join a channel', value: 'Join-Channel', message: 'Join a channel' },
         { name: 'Exit', value: 'Exit', message: 'Exit ECHO' },
-      ]
+      ],
+      prefix: `${colorize('\u2716', 'magenta')}`,
     },
   ];
 

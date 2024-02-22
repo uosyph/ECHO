@@ -41,12 +41,12 @@ module.exports = (io) => {
       });
 
       socket.emit('joined',
-        `You joined ${colorize(room, 'cyan')}` +
+        `You joined ${colorize(room, 'magenta')}` +
         `\n${colorize('/h', 'green')} to go Home.` +
         `\n${colorize('/e', 'brightRed')} to Exit.`
       );
       socket.broadcast.to(room).emit('user joined',
-        `${colorize(socket.username, 'brightWhite')} joined ${colorize(room, 'cyan')}`
+        `${colorize(socket.username, 'brightWhite')} joined ${colorize(room, 'magenta')}`
       );
     });
 
@@ -68,7 +68,7 @@ module.exports = (io) => {
       const room = socketRoomMap.get(socket.username);
       if (room) {
         socket.broadcast.to(room).emit('user left',
-          `${colorize(socket.username, 'brightWhite')} left ${colorize(room, 'cyan')}`
+          `${colorize(socket.username, 'brightWhite')} left ${colorize(room, 'magenta')}`
         );
         socketRoomMap.delete(socket.username);
       }

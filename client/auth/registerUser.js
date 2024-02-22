@@ -10,16 +10,19 @@ const registerUser = async () => {
       type: 'input',
       name: 'username',
       message: 'Enter your username:',
+      prefix: `${colorize('\u00D7', 'magenta', null, 'bold')}`,
     },
     {
       type: 'input',
       name: 'email',
       message: 'Enter your email:',
+      prefix: `${colorize('\u00D7', 'magenta', null, 'bold')}`,
     },
     {
       type: 'password',
       name: 'password',
       message: 'Enter your password:',
+      prefix: `${colorize('\u00D7', 'magenta', null, 'bold')}`,
     },
   ];
 
