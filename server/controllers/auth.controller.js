@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const redisClient = require('../utils/redis');
-const User = require("../models/user.model");
+const User = require('../models/user.model');
 
 require('dotenv').config();
 const SALT_ROUNDS = Number(process.env.SALT_ROUNDS);

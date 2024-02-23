@@ -2,7 +2,7 @@ const axios = require('axios');
 const { prompt } = require('inquirer');
 
 const joinChannel = require('./joinChannel');
-const colorize = require("../tools/colorizer");
+const colorize = require('../tools/colorizer');
 
 module.exports = async function createChatRoom(client) {
   const question = [

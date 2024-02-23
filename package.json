@@ -2,6 +2,10 @@
   "name": "echo",
   "version": "1.0.0",
   "description": "TUI Chat App",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint .",
+    "fix-lint": "./node_modules/.bin/eslint --fix ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uosyph/ECHO.git"
@@ -16,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/uosyph/ECHO/issues"
   },
-  "homepage": "https://github.com/uosyph/ECHO#readme"
+  "homepage": "https://github.com/uosyph/ECHO#readme",
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
 }

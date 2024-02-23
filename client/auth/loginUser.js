@@ -2,7 +2,7 @@ const axios = require('axios');
 const { prompt } = require('inquirer');
 const LocalStorage = require('node-localstorage').LocalStorage;
 
-const colorize = require("../tools/colorizer");
+const colorize = require('../tools/colorizer');
 
 const loginUser = async (username, password, email = null) => {
   const localStorage = new LocalStorage('./');
@@ -15,7 +15,7 @@ const loginUser = async (username, password, email = null) => {
       });
 
       console.log(colorize(response.data.message, 'brightWhite'));
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem('token', response.data.token);
       return response.data.token;
     }
     catch (error) { console.error(colorize(error.response.data, 'red')); }
@@ -45,7 +45,7 @@ const loginUser = async (username, password, email = null) => {
     });
 
     console.log(colorize(response.data.message, 'brightWhite'));
-    localStorage.setItem("token", response.data.token);
+    localStorage.setItem('token', response.data.token);
     return response.data.token;
   }
   catch (error) {
