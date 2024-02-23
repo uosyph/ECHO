@@ -7,6 +7,8 @@
   "scripts": {
     "start": "node client.js",
     "watch": "nodemon client.js",
+    "lint": "./node_modules/.bin/eslint",
+    "fix-lint": "./node_modules/.bin/eslint --fix",
     "test": "jest"
   },
   "repository": {
@@ -32,6 +34,7 @@
     "socket.io-client": "^4.7.4"
   },
   "devDependencies": {
+    "eslint": "^8.57.0",
     "mongodb-memory-server": "^9.1.6",
     "nodemon": "^3.0.3"
   }
