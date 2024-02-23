@@ -11,6 +11,7 @@ function homeInterface() {
       choices: [
         { name: 'Create a channel', value: 'Create-Channel', message: 'Create a channel' },
         { name: 'Join a channel', value: 'Join-Channel', message: 'Join a channel' },
+        { name: 'Logout', value: 'Logout', message: 'Logout from your account' },
         { name: 'Exit', value: 'Exit', message: 'Exit ECHO' },
       ],
       prefix: `${colorize('\u2716', 'magenta')}`,

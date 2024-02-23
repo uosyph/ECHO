@@ -2,7 +2,7 @@ const axios = require('axios');
 const { prompt } = require('inquirer');
 const LocalStorage = require('node-localstorage').LocalStorage;
 
-const colorize = require("../../server/tools/colorizer");
+const colorize = require("../tools/colorizer");
 
 const loginUser = async (username, password, email = null) => {
   const localStorage = new LocalStorage('./');
