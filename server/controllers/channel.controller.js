@@ -1,6 +1,6 @@
 const ChatRoom = require('../models/channel.model');
 
-async function createChatRoom(req, res) {
+async function createChannel(req, res) {
   try {
     const { roomName } = req.body;
     const isRoomExist = await ChatRoom.findOne({ roomName });
@@ -15,7 +15,7 @@ async function createChatRoom(req, res) {
   }
 }
 
-async function joinChatRoom(req, res) {
+async function joinChannel(req, res) {
   try {
     const chatRooms = await ChatRoom.find({}, 'roomName');
     const roomNames = chatRooms.map((chatRoom) => chatRoom.roomName);
@@ -26,6 +26,6 @@ async function joinChatRoom(req, res) {
 }
 
 module.exports = {
-  createChatRoom,
-  joinChatRoom,
+  createChannel,
+  joinChannel,
 };

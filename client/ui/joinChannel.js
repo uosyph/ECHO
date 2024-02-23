@@ -3,7 +3,7 @@ const { prompt } = require('inquirer');
 
 const colorize = require('../tools/colorizer');
 
-module.exports = async function joinChatRoom(client, channel = null) {
+module.exports = async function joinChannel(client, channel = null) {
   if (channel) client.emit('join', channel);
   else {
     const response = await axios.get('http://127.0.0.1:8080/channel/chatrooms');

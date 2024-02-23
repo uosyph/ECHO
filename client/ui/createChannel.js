@@ -4,7 +4,7 @@ const { prompt } = require('inquirer');
 const joinChannel = require('./joinChannel');
 const colorize = require('../tools/colorizer');
 
-module.exports = async function createChatRoom(client) {
+module.exports = async function createChannel(client) {
   const question = [
     {
       type: 'input',
@@ -26,7 +26,7 @@ module.exports = async function createChatRoom(client) {
   } catch (error) {
     if (error.response.data.message) {
       console.error(colorize(error.response.data.message, 'red'));
-      createChatRoom(client);
+      createChannel(client);
     }
     else console.error(error);
   }
