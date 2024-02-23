@@ -36,7 +36,7 @@ module.exports = (io) => {
       const messages = await Message.find({ roomId: room }).sort({ createdAt: 1 });
       messages.forEach((message) => {
         socket.emit('chat message',
-          socket.username === message.username ? message.message : `${colorize(socket.username, 'brightWhite', null, 'bold')}: ${message.message}`
+          socket.username === message.username ? message.message : `${colorize(message.username, 'brightWhite', null, 'bold')}: ${message.message}`
         );
       });
 

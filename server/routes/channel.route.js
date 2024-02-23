@@ -1,10 +1,10 @@
 const express = require('express');
 
-const { createChatRoom, joinChatRoom } = require('../controllers/channel.controller');
+const { createChannel, joinChannel } = require('../controllers/channel.controller');
 
-const chatRoomRouter = express.Router();
+const channelRouter = express.Router();
 
-chatRoomRouter.post('/chatrooms', createChatRoom);
-chatRoomRouter.get('/chatrooms', joinChatRoom);
+channelRouter.post('/chatrooms', createChannel);
+channelRouter.get('/chatrooms', joinChannel);
 
-module.exports = chatRoomRouter;
+module.exports = channelRouter;
