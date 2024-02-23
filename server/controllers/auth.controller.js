@@ -11,6 +11,31 @@ const SECRET_KEY = process.env.SECRET_KEY;
 async function registerUser(req, res) {
   try {
     const { username, email, password } = req.body;
+
+    if (username === '') {
+      return res.status(400).json({ message: 'No username provided.' });
+    }
+    else if (username.length < 5 || username.length > 24) {
+      return res.status(400).json({ message: 'Username must be between 5 and 24 characters long.' });
+    }
+    else if (!(/^[a-zA-Z0-9._]+$/.test(username))) {
+      return res.status(400).json({ message: 'Usernames can only contain letters, numbers, dots, and underscores.' });
+    }
+
+    if (email === '') {
+      return res.status(400).json({ message: 'No email provided.' });
+    }
+    else if (!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) {
+      return res.status(400).json({ message: 'Not a valid email.' });
+    }
+
+    if (password === '') {
+      return res.status(400).json({ message: 'No password provided.' });
+    }
+    else if (password.length < 6 || password.length > 48) {
+      return res.status(400).json({ message: 'Password must be between 6 and 48 characters long.' });
+    }
+
     const existingUsername = await User.findOne({ username });
     const existingEmail = await User.findOne({ email });
 
@@ -36,6 +61,10 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
   try {
     const { username, password } = req.body;
+    if (
+      username.length < 5 || username.length > 24 ||
+      password.length < 6 || password.length > 48
+    ) return res.status(400).json({ message: 'Incorrect credentials provided.' });
 
     const user = await User.findOne({ username });
     if (!user) {
@@ -50,7 +79,7 @@ async function loginUser(req, res) {
     const token = jwt.sign({ userId: user._id }, SECRET_KEY);
     await redisClient.set(username, token);
 
-    res.status(200).json({ token, message: 'User loggedin successfully!' });
+    res.status(200).json({ token, message: 'User logged in successfully!' });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'An error occurred while attempting to login a user.' });
