@@ -79,7 +79,7 @@ async function loginUser(req, res) {
     const token = jwt.sign({ userId: user._id }, SECRET_KEY);
     await redisClient.set(username, token);
 
-    res.status(200).json({ token, message: 'User loggedin successfully!' });
+    res.status(200).json({ token, message: 'User logged in successfully!' });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'An error occurred while attempting to login a user.' });

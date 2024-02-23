@@ -18,7 +18,7 @@ module.exports = (io) => {
       next();
     } catch (error) {
       console.error('Authentication error:', error);
-      next(new Error('An error occurred while attempting to authentication user.'));
+      next(new Error('An error occurred while attempting to authenticate user.'));
     }
   });
 
