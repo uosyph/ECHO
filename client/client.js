@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const { Command } = require('commander');
 const ioSocket = require('socket.io-client');
+const LocalStorage = require('node-localstorage').LocalStorage;
 
 const authInterface = require('./views/authInterface');
 const homeInterface = require('./views/homeInterface');
@@ -15,9 +16,16 @@ const echo = new Command();
 echo.version('1.0.3').description('TUI Chat App');
 
 echo.action(async () => {
-  // Render authentication interface according to what the user selects
-  const authOption = await authInterface();
-  const token = await render[authOption]();
+  // Check if user if logged in and if not Render authentication interface
+  const localStorage = new LocalStorage('./');
+  const storedToken = localStorage.getItem("token");
+
+  let token;
+  if (storedToken) token = storedToken;
+  else {
+    const authOption = await authInterface();
+    token = await render[authOption]();
+  }
 
   if (!token) {
     console.error(colorize('Authentication Error!', 'brightWhite', 'red'));
