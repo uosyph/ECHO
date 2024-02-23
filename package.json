@@ -3,13 +3,8 @@
   "version": "1.0.0",
   "description": "TUI Chat App",
   "scripts": {
-    "start-server": "node ./server/server.js",
-    "watch-server": "nodemon ./server/server.js",
-    "start-client": "node ./client/client.js",
-    "watch-client": "nodemon ./client/client.js",
-    "lint": "./node_modules/.bin/eslint ./",
-    "fix-lint": "./node_modules/.bin/eslint --fix ./",
-    "test-server": "jest ./server"
+    "lint": "./node_modules/.bin/eslint .",
+    "fix-lint": "./node_modules/.bin/eslint --fix ."
   },
   "repository": {
     "type": "git",

@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "lint": "./node_modules/.bin/eslint",
-    "fix-lint": "./node_modules/.bin/eslint --fix",
+    "lint": "./node_modules/.bin/eslint .",
+    "fix-lint": "./node_modules/.bin/eslint --fix .",
     "test": "jest"
   },
   "repository": {
