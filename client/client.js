@@ -9,7 +9,7 @@ const channelInterface = require('./views/channelInterface');
 const render = require('./views/renderInterface');
 const eventHandler = require('./eventHandler');
 const exitClient = require('./ui/exitClient');
-const colorize = require("./tools/colorizer");
+const colorize = require('./tools/colorizer');
 
 const echo = new Command();
 
@@ -18,7 +18,7 @@ echo.version('1.1.0').description('TUI Chat App');
 echo.action(async () => {
   // Check if user if logged in and if not Render authentication interface
   const localStorage = new LocalStorage('./');
-  const storedToken = localStorage.getItem("token");
+  const storedToken = localStorage.getItem('token');
 
   let token;
   if (storedToken) token = storedToken;

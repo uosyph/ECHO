@@ -6,7 +6,7 @@ const render = require('./renderInterface');
 const getToken = require('../auth/getToken');
 const homeInterface = require('./homeInterface');
 const exitClient = require('../ui/exitClient');
-const colorize = require("../tools/colorizer");
+const colorize = require('../tools/colorizer');
 
 function channelInterface(client, channel) {
   const rl = readline.createInterface({

@@ -2,7 +2,7 @@ const axios = require('axios');
 const { prompt } = require('inquirer');
 
 const loginUser = require('./loginUser');
-const colorize = require("../tools/colorizer");
+const colorize = require('../tools/colorizer');
 
 const registerUser = async () => {
   const questions = [
