@@ -37,7 +37,12 @@ echo.action(async () => {
 
   // Render menu interface according to what the user selects
   const homeOption = await homeInterface();
-  const channel = await render[homeOption](client);
+
+  let channel = undefined;
+  if (homeOption === 'Create-Channel') {
+    while (channel === undefined) channel = await render[homeOption](client);
+  }
+  else channel = await render[homeOption](client);
 
   channelInterface(client, channel);
 });

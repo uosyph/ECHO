@@ -40,7 +40,13 @@ function channelInterface(client, channel) {
 
       // Render menu interface according to user's selection and join a new channel
       const homeOption = await homeInterface();
-      const channel = await render[homeOption](newClient);
+
+      let channel = undefined;
+      if (homeOption === 'Create-Channel') {
+        while (channel === undefined) channel = await render[homeOption](newClient);
+      }
+      else channel = await render[homeOption](newClient);
+
       channelInterface(newClient, channel);
     }
     else if (message === '' || message.length === 0) return;
