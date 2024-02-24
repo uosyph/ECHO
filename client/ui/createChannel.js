@@ -26,7 +26,6 @@ module.exports = async function createChannel(client) {
   } catch (error) {
     if (error.response.data.message) {
       console.error(colorize(error.response.data.message, 'red'));
-      createChannel(client);
     }
     else console.error(error);
   }

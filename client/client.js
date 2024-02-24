@@ -13,7 +13,7 @@ const colorize = require('./tools/colorizer');
 
 const echo = new Command();
 
-echo.version('1.1.1').description('TUI Chat App');
+echo.version('1.1.2').description('TUI Chat App');
 
 echo.action(async () => {
   // Check if user if logged in and if not Render authentication interface
@@ -37,7 +37,12 @@ echo.action(async () => {
 
   // Render menu interface according to what the user selects
   const homeOption = await homeInterface();
-  const channel = await render[homeOption](client);
+
+  let channel = undefined;
+  if (homeOption === 'Create-Channel') {
+    while (channel === undefined) channel = await render[homeOption](client);
+  }
+  else channel = await render[homeOption](client);
 
   channelInterface(client, channel);
 });
