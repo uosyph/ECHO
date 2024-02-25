@@ -32,7 +32,7 @@ echo.action(async () => {
     process.exit(1);
   }
 
-  const client = ioSocket('http://127.0.0.1:8080', { auth: { token } });
+  const client = ioSocket('https://echo-rrur.onrender.com', { auth: { token } });
   eventHandler(client);
 
   // Render menu interface according to what the user selects
