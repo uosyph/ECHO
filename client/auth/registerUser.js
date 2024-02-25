@@ -29,7 +29,7 @@ const registerUser = async () => {
   try {
     const answers = await prompt(questions);
     const { username, email, password } = answers;
-    const response = await axios.post('http://127.0.0.1:8080/auth/register', {
+    const response = await axios.post('https://echo-rrur.onrender.com/auth/register', {
       username,
       email,
       password,

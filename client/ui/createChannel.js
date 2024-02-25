@@ -17,7 +17,7 @@ module.exports = async function createChannel(client) {
   try {
     const answer = await prompt(question);
     const roomName = answer.roomName;
-    const response = await axios.post('http://127.0.0.1:8080/channel/chatrooms', { roomName });
+    const response = await axios.post('https://echo-rrur.onrender.com/channel/chatrooms', { roomName });
     const channel = response.data;
 
     console.info(colorize(channel, 'magenta', null, 'bold') + colorize(' was just created.', 'brightWhite'));
