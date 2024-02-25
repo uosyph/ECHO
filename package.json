@@ -1,7 +1,7 @@
 {
   "name": "echo",
   "version": "1.0.0",
-  "description": "TUI Chat App",
+  "description": "A modern and lightweight TUI chat app designed for seamless communication in a command-line environment.",
   "scripts": {
     "lint": "./node_modules/.bin/eslint .",
     "fix-lint": "./node_modules/.bin/eslint --fix ."
