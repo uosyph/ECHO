@@ -1,8 +1,16 @@
 # ECHO
 
-ECHO is a lightweight Terminal User Interface (TUI) chatting application designed for seamless communication in a command-line environment.
+ECHO is a modern and lightweight Terminal User Interface (TUI) chatting application designed for seamless communication in a command-line environment.
 With ECHO, users can engage in text-based conversations without the need for a graphical user interface,
 making it ideal for users who prefer a simple yet feature-rich chatting experience.
+
+## Key Features
+
+- User Authentication: Secure login ensures that only authorized users can access the chat application.
+- Persistent Login: Enjoy seamless access to your account with persistent login functionality.
+- Multiple Channels: Create, join, and manage channels to facilitate conversations on various topics.
+- Real-time Messaging: Instantly send and receive messages within the application.
+- Chat History: When entering a channel, all previous messages are loaded for a seamless conversation history.
 
 ## Usage
 
