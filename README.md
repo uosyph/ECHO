@@ -31,7 +31,7 @@ To contribute, follow these steps:
 - Test the changes thoroughly.
 - Commit your changes (`git commit -am 'Improve feature'`).
 - Push to the branch (`git push origin improve-feature`).
-- [Create a Pull Request](https://github.com/uosyph/url-shortener/compare).
+- [Create a Pull Request](https://github.com/uosyph/ECHO/compare).
 
 ### Client Development
 
