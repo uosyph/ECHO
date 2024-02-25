@@ -15,6 +15,13 @@ It supports multiple channels, enabling users to create, join, and switch betwee
 - **Real-time Messaging**: Instantly send and receive messages within the application.
 - **Chat History**: When entering a channel, all previous messages are loaded for a seamless conversation history.
 
+## Usage
+
+- Install ECHO globally using npm:
+  - Run **`npm install echo-chat -g`** on Windows systems.
+  - Run **`sudo npm install echo-chat -g`** on Unix-like systems.
+- Run **`echo-chat`** in the terminal.
+
 ## Contributing
 
 Contributions are welcome to both the server-side and client-side components of ECHO.
