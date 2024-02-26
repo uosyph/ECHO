@@ -13,7 +13,9 @@ const colorize = require('./tools/colorizer');
 
 const echo = new Command();
 
-echo.version('1.2.2').description('TUI Chat App');
+echo
+  .version('1.3.0')
+  .description('A modern and lightweight TUI chat app designed for seamless communication in a command-line environment.');
 
 echo.action(async () => {
   // Check if user if logged in and if not Render authentication interface

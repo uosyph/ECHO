@@ -1,6 +1,6 @@
 {
   "name": "echo-server",
-  "version": "1.0.3",
+  "version": "1.2.0",
   "description": "A modern and lightweight TUI chat app designed for seamless communication in a command-line environment.",
   "main": "server.js",
   "scripts": {
