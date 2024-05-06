@@ -14,7 +14,7 @@ const colorize = require('./tools/colorizer');
 const echo = new Command();
 
 echo
-  .version('1.3.0')
+  .version('1.3.1')
   .description('A modern and lightweight TUI chat app designed for seamless communication in a command-line environment.');
 
 echo.action(async () => {
@@ -34,7 +34,7 @@ echo.action(async () => {
     process.exit(1);
   }
 
-  const client = ioSocket('https://echo-rrur.onrender.com', { auth: { token } });
+  const client = ioSocket('https://echo-jvjc.onrender.com', { auth: { token } });
   eventHandler(client);
 
   // Render menu interface according to what the user selects

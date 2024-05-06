@@ -35,7 +35,7 @@ function channelInterface(client, channel) {
       rl.close();
 
       // Create a new client connection and handle its events
-      const newClient = ioSocket('https://echo-rrur.onrender.com', { auth: { token } });
+      const newClient = ioSocket('https://echo-jvjc.onrender.com', { auth: { token } });
       eventHandler(newClient);
 
       // Render menu interface according to user's selection and join a new channel

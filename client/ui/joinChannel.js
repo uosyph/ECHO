@@ -6,7 +6,7 @@ const colorize = require('../tools/colorizer');
 module.exports = async function joinChannel(client, channel = null) {
   if (channel) client.emit('join', channel);
   else {
-    const response = await axios.get('https://echo-rrur.onrender.com/channel/chatrooms');
+    const response = await axios.get('https://echo-jvjc.onrender.com/channel/chatrooms');
     const channels = response.data;
     const channelsOption = [
       {
